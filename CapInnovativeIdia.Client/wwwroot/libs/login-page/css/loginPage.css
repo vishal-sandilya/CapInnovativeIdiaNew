@@ -1,0 +1,23 @@
+﻿.login-box, .register-box {
+    width: 40%;
+    margin: 11% auto;
+}
+
+.btn.btn-flat {
+    float: right;
+}
+
+.help-block {
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    color: #dd4b39;
+    font-weight: 400;
+}
+
+html, body {
+    height: auto;
+}
+.serverResponseMessage {
+    text-align:center;
+}

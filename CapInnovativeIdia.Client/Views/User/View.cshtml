@@ -1,0 +1,79 @@
+﻿@model CapInnovativeIdia.Domain.ViewModels.CreateUserViewModel
+@{
+    ViewData["Title"] = "View";
+}
+<style>
+    .help-block {
+        display: block;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        color: #dd4b39;
+        font-weight: 600;
+    }
+</style>
+@section Styles {
+    <!-- Select2 -->
+    <link rel="stylesheet" href="~/libs/select2/css/select2.min.css">
+}
+
+@section Scripts {
+    <!-- Select2 -->
+    <script src="~/libs/select2/js/select2.full.min.js"></script>
+    <!-- Page script -->
+    <script>
+        $(function () {
+            //Initialize Select2 Elements
+            $('.select2').select2()
+        })
+    </script>
+}
+
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <h3 class="box-title">View User Details</h3>
+    </div>
+    <!-- /.box-header -->
+    <!-- form start -->
+    <form role="form">
+        <div class="box-body">
+            <div class="form-group">
+                <label asp-for="User.FirstName">First Name</label>
+                <input asp-for="User.FirstName" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter First Name" disabled>
+            </div>
+            <div class="form-group">
+                <label asp-for="User.LastName">Last Name</label>
+                <input asp-for="User.LastName" type="text" class="form-control" id="exampleInputPassword1" placeholder="Eneter Last Name" disabled>
+            </div>
+            <div class="form-group">
+                <label asp-for="User.Email">Email</label>
+                <input asp-for="User.Email" type="email" class="form-control" id="exampleInputPassword1" placeholder="Eneter Email" disabled>
+            </div>
+            <div class="form-group">
+                <label asp-for="User.Gender">Gender</label>
+                <select asp-for="User.Gender" class="form-control" disabled>
+                    <option value="">Select</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="User.TeamId">Team</label>
+                <select asp-for="User.TeamId" asp-items="@(new SelectList(Model.Teams,"Id","Name"))" class="form-control" disabled>
+                    <option value="">Select</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Select Access Level</label>
+                <select id="RoleIds" name="RoleIds" asp-for="RoleIds" asp-items="@(new MultiSelectList(Model.Roles,"Id","Name"))" class="form-control select2" multiple="multiple" data-placeholder="Select Privilage Group"
+                        style="width: 100%;" disabled>
+                </select>
+            </div>
+        </div>
+        <div class="box-footer">
+            <a asp-controller="User" asp-action="Index" class="btn btn-primary">Back</a>
+        </div>
+        <!-- /.box-body -->
+    </form>
+</div>
+
